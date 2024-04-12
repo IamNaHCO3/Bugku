@@ -3,7 +3,7 @@ name: AUTO-RUN
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '* * * * *'
+    - cron:  '0 4 * * *'
 
 
 jobs:
@@ -22,6 +22,6 @@ jobs:
 
       - name: 'Start running'
         env:
-          Bugku_uname: ${{ secrets.BUGKU_UESRNAME }}
-          Bugku_passwd: ${{ secrets.BUGKU_PASSWORD }}
+          BUGKU_UESRNAME: ${{ secrets.BUGKU_UESRNAME }}
+          BUGKU_PASSWORD: ${{ secrets.BUGKU_PASSWORD }}
         run: python main.py
