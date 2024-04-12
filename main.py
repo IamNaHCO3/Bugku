@@ -47,8 +47,8 @@ class Bugku:
         response = self.session.get(url=self.url['checkin'])
         return response.json()['msg']
 
-username = os.getenv('Bugku-uname', 'username')
-password = os.getenv('Bugku-passwd', 'password')
+username = os.getenv('Bugku_uname', 'username')
+password = os.getenv('Bugku_passwd', 'password')
 bugku = Bugku(username=username, password=password)
 
 print(bugku.checkin())
