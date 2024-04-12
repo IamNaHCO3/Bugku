@@ -1,6 +1,7 @@
+import os
 import ddddocr
 import requests
-import os
+
 
 class Bugku:
     def __init__(self, username, password):
@@ -33,7 +34,7 @@ class Bugku:
             self.is_login = True
             return response.json()
         else:
-            raise response.json()['msg']
+            raise RuntimeError(response.json()['msg'])
 
     def get_captcha(self) -> str:
         response = self.session.get(url=self.url['captcha'])
@@ -47,8 +48,8 @@ class Bugku:
         response = self.session.get(url=self.url['checkin'])
         return response.json()['msg']
 
-username = os.getenv('Bugku_uname', 'username')
-password = os.getenv('Bugku_passwd', 'password')
+username = os.getenv('BUGKU_USERNAME', 'username')
+password = os.getenv('BUGKU_PASSWORD', 'password')
 bugku = Bugku(username=username, password=password)
 
 print(bugku.checkin())
