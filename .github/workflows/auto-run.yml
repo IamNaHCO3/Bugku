@@ -22,6 +22,6 @@ jobs:
 
       - name: 'Start running'
         env:
-          BUGKU_UESRNAME: ${{ secrets.BUGKU_UESRNAME }}
+          BUGKU_USERNAME: ${{ secrets.BUGKU_USERNAME }}
           BUGKU_PASSWORD: ${{ secrets.BUGKU_PASSWORD }}
         run: python main.py
