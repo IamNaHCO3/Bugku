@@ -1,6 +1,6 @@
 import ddddocr
 import requests
-
+import os
 
 class Bugku:
     def __init__(self, username, password):
@@ -47,6 +47,8 @@ class Bugku:
         response = self.session.get(url=self.url['checkin'])
         return response.json()['msg']
 
+username = os.getenv('Bugku-uname', 'username')
+password = os.getenv('Bugku-passwd', 'password')
+bugku = Bugku(username=username, password=password)
 
-bugku = Bugku(username='', password='')
 print(bugku.checkin())
