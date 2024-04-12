@@ -1,0 +1,27 @@
+name: AUTO-RUN
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '* * * * *'
+
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 'Start running'
+        env:
+          Bugku_uname: ${{ secrets.BUGKU_UESRNAME }}
+          Bugku_passwd: ${{ secrets.BUGKU_PASSWORD }}
+        run: python main.py
